@@ -53,7 +53,7 @@ export default function AuditLogs() {
 
   const logs = data?.logs || [];
   const total = data?.pagination?.total || 0;
-  const totalPages = data?.pagination?.pages || 1;
+  const totalPages = data?.pagination?.totalPages || 1;
 
   const handleExportCSV = async () => {
     const allData = await logsApi.getAll({ limit: 500, search: debouncedSearch, severity, status, sort });

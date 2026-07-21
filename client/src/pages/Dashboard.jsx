@@ -134,21 +134,8 @@ export default function Dashboard() {
       </div>
 
       {/* Bottom Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card hover>
-          <CardHeader title="Recent Alerts" subtitle="Critical & high severity" />
-          <div className="space-y-2">
-            {recentAlerts?.length ? recentAlerts.map((alert) => (
-              <div key={alert.id || alert._id} className="flex items-center justify-between p-2 rounded-lg bg-slate-800/30 border border-slate-700/30 text-sm hover:bg-slate-800/50 transition-colors">
-                <div className="min-w-0">
-                  <p className="text-slate-300 font-medium truncate">{alert.action}</p>
-                  <p className="text-xs text-slate-500 truncate">{alert.actor}</p>
-                </div>
-                <SeverityBadge severity={alert.severity} />
-              </div>
-            )) : <p className="text-sm text-slate-500 py-4 text-center">No recent alerts</p>}
-          </div>
-        </Card>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
 
         <Card hover>
           <CardHeader title="Recent Activities" subtitle="Latest audit events" />

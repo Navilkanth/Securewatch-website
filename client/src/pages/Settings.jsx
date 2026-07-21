@@ -24,9 +24,9 @@ export default function Settings() {
       // Fetch up to 500 records for the export
       const allData = await logsApi.getAll({ limit: 500 });
       if (exportFormat === 'csv') {
-        exportToCSV(allData.data, 'securewatch-all-logs');
+        exportToCSV(allData.logs, 'securewatch-all-logs');
       } else {
-        await exportToPDF(allData.data, 'securewatch-all-logs');
+        await exportToPDF(allData.logs, 'securewatch-all-logs');
       }
       toast.success('Export downloaded', { id: 'export' });
     } catch (error) {

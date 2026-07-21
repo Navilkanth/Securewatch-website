@@ -31,7 +31,7 @@ export default function Investigation() {
     }),
   });
 
-  const logs = data?.data || [];
+  const logs = data?.logs || [];
 
   return (
     <div className="space-y-6 h-[calc(100vh-8rem)] flex flex-col">
