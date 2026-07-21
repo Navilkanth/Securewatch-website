@@ -1,0 +1,38 @@
+[
+  {
+    "actor": "priya.nair@company.com",
+    "role": "admin",
+    "action": "DELETE_USER",
+    "resource": "/api/users/334",
+    "resourceType": "USER",
+    "ipAddress": "192.168.1.45",
+    "region": "ap-south-1",
+    "severity": "HIGH",
+    "status": "Unresolved",
+    "timestamp": "2025-06-14T08:32:11Z"
+  },
+  {
+    "actor": "john.doe@company.com",
+    "role": "user",
+    "action": "FAILED_LOGIN",
+    "resource": "/api/auth/login",
+    "resourceType": "SYSTEM",
+    "ipAddress": "203.0.113.42",
+    "region": "us-east-1",
+    "severity": "CRITICAL",
+    "status": "Unresolved",
+    "timestamp": "2025-06-14T09:15:22Z"
+  },
+  {
+    "actor": "sarah.chen@company.com",
+    "role": "superadmin",
+    "action": "GRANT_ADMIN",
+    "resource": "/api/users/112/roles",
+    "resourceType": "USER",
+    "ipAddress": "192.168.1.10",
+    "region": "eu-west-1",
+    "severity": "CRITICAL",
+    "status": "Investigating",
+    "timestamp": "2025-06-14T10:00:00Z"
+  }
+]

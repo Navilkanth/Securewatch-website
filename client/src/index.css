@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  --color-navy-900: #0a0f1e;
+  --color-navy-800: #0f172a;
+  --color-navy-700: #1e293b;
+  --color-navy-600: #334155;
+
+  --color-critical: #ef4444;
+  --color-high: #f97316;
+  --color-medium: #eab308;
+  --color-low: #22c55e;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}
+
+.light * {
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+body {
+  @apply bg-navy-900 text-slate-200 antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ===================== LIGHT MODE GLOBAL ===================== */
+.light body,
+.light {
+  @apply bg-slate-100 text-slate-900;
+}
+
+/* Glass card */
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+}
+
+.light .glass {
+  @apply bg-white border-slate-200 shadow-sm;
+}
+
+/* Card hover */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 hover:-translate-y-0.5;
+}
+
+/* ===================== SKELETON ===================== */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.light .skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+}
+
+/* ===================== LIGHT MODE — LAYOUT ===================== */
+/* Sidebar */
+.light aside {
+  background: white !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Sidebar nav links */
+.light nav a {
+  color: #475569 !important;
+}
+.light nav a:hover {
+  color: #1e293b !important;
+  background: rgba(0,0,0,0.04) !important;
+}
+.light nav a.active,
+.light nav a[aria-current="page"] {
+  color: #2563eb !important;
+  background: rgba(37,99,235,0.08) !important;
+}
+
+/* Sidebar brand text */
+.light aside h1 {
+  color: #0f172a !important;
+}
+
+/* Sidebar toggle button */
+.light aside button {
+  border-color: #e2e8f0 !important;
+  color: #94a3b8 !important;
+}
+.light aside button:hover {
+  color: #475569 !important;
+}
+
+/* ===================== LIGHT MODE — NAVBAR ===================== */
+.light header {
+  background: rgba(255,255,255,0.9) !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Navbar buttons */
+.light header button {
+  color: #64748b !important;
+}
+.light header button:hover {
+  color: #1e293b !important;
+  background: rgba(0,0,0,0.05) !important;
+}
+
+/* Clock badge */
+.light .font-mono {
+  color: #475569;
+}
+
+/* User name */
+.light header p {
+  color: #1e293b;
+}
+
+/* ===================== LIGHT MODE — CARDS ===================== */
+.light .glass h1,
+.light .glass h2,
+.light .glass h3,
+.light .glass h4,
+.light .glass p,
+.light .glass span:not(.bg-red-500):not(.bg-green-500):not(.bg-orange-500):not(.bg-yellow-500):not(.bg-blue-500):not(.bg-primary-400):not(.bg-indigo-500) {
+  color: inherit;
+}
+
+/* ===================== LIGHT MODE — TABLE ===================== */
+.light table thead tr {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light table thead th {
+  color: #64748b !important;
+}
+
+.light table tbody tr {
+  border-color: #f1f5f9 !important;
+}
+
+.light table tbody tr:hover {
+  background: #f8fafc !important;
+}
+
+.light table tbody td {
+  color: #334155 !important;
+}
+
+/* ===================== LIGHT MODE — PAGINATION ===================== */
+.light .border-t {
+  border-color: #e2e8f0 !important;
+}
+
+/* ===================== LIGHT MODE — TEXT OVERRIDES ===================== */
+/* Ensure all slate-100 / slate-200 / slate-300 text goes dark in light mode */
+.light .text-slate-100 { color: #0f172a !important; }
+.light .text-slate-200 { color: #1e293b !important; }
+.light .text-slate-300 { color: #334155 !important; }
+.light .text-slate-400 { color: #475569 !important; }
+/* slate-500 stays (it's subtle label text, already readable) */
+
+/* Dashboard title & headings */
+.light h1 { color: #0f172a; }
+.light h2 { color: #1e293b; }
+.light h3 { color: #1e293b; }
+
+/* ===================== LIGHT MODE — FORM ELEMENTS ===================== */
+.light input,
+.light select,
+.light textarea {
+  background: white !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light input::placeholder {
+  color: #94a3b8 !important;
+}
+
+.light input:focus,
+.light select:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.15) !important;
+}
+
+/* ===================== LIGHT MODE — BUTTONS ===================== */
+.light button.border {
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+  background: white !important;
+}
+.light button.border:hover {
+  background: #f8fafc !important;
+}
+
+/* ===================== LIGHT MODE — KBD ===================== */
+.light kbd {
+  background: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #64748b !important;
+}
+
+/* ===================== LIGHT MODE — TICKER BANNER ===================== */
+.light .from-slate-900 {
+  --tw-gradient-from: white !important;
+}
+.light .via-slate-900\/80 {
+  --tw-gradient-via: rgba(255,255,255,0.8) !important;
+}
+
+/* ===================== LIGHT MODE — STATUS/HEALTH ROW ===================== */
+.light .bg-slate-800\/20 {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+.light .bg-slate-800\/30 {
+  background: #f1f5f9 !important;
+}
+.light .bg-slate-800\/50 {
+  background: #f1f5f9 !important;
+}
+
+/* ===================== LIGHT MODE — FONT MONO (timestamps etc) ===================== */
+.light .font-mono {
+  color: #334155;
+}
