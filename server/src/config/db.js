@@ -10,17 +10,22 @@ export async function connectDB() {
     await mongoose.connect(uri);
     console.log(`MongoDB connected to ${uri}`);
   } catch (err) {
-    console.log(`Failed to connect to ${uri}, starting in-memory MongoDB...`);
+    console.log(`Failed to connect to ${uri}`);
+    if (process.env.VERCEL) {
+      console.error('Cannot start in-memory MongoDB on Vercel. Please provide a valid MONGODB_URI and ensure Vercel IPs are allowlisted.');
+      throw err;
+    }
+    
+    console.log(`Starting in-memory MongoDB fallback...`);
     try {
       mongoServer = await MongoMemoryServer.create();
       uri = mongoServer.getUri();
       await mongoose.connect(uri);
       console.log(`In-memory MongoDB started and connected at ${uri}`);
-      // Set the env variable so seed scripts or other processes in the same process can use it
       process.env.MONGODB_URI = uri;
     } catch (memErr) {
       console.error('In-memory MongoDB connection error:', memErr.message);
-      process.exit(1);
+      throw memErr;
     }
   }
 }
